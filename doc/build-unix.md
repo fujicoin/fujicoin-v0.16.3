@@ -35,9 +35,9 @@ cd ..
 
 CONFIG_SITE=$PWD/depends/x86_64-pc-linux-gnu/share/config.site ./configure --prefix=$PWD/dist --without-gui --disable-tests --disable-bench --disable-shared --disable-dependency-tracking
 
-make
-strip src/fujicoin-cli src/fujicoin-tx src/fujicoind
 make install
+cd dist/bin
+strip fujicoin-cli fujicoind fujicoin-tx
 ```
 The executable files are in dist/bin .
 Note: x86_64-pc-linux-gnu may be different on another system.

@@ -6,11 +6,12 @@ http://www.fujicoin.org
 What is Fujicoin?
 ----------------
 
-Fujicoin is a fork of Bitcoin that is designed to resist the monopolisation of
-mining power.
- - 1 minute block targets
- - Coins are issued based on S-curve theory
- - ~10 billion total coins
+Fujicoin is a fork of Bitcoin. This is the best coin intended fair distribution and to improve usability.
+
+ - Confirmation time is ten times faster than Bitcoin, making it reliable for time-critical transactions.
+ - Transaction capacity is ten times larger than original Bitcoin. You do not have to worry about transaction congestion.
+ - Coins are issued based on S-curve theory, so it will realize a fair distribution over the future.
+ - Fujicoin made 51% attack impossible for the first time in the world.
  - Difficulty retargeting every block to recover from large hashrate swings
  - scrypt-N11 proof of work algorithm for ASIC resistance
 

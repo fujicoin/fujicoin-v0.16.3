@@ -99,11 +99,9 @@ Do not compile tests and bench.
     mkdir dist
     ./autogen.sh
     CONFIG_SITE=$PWD/depends/x86_64-w64-mingw32/share/config.site ./configure --prefix=$PWD/dist --disable-tests --disable-bench --disable-dependency-tracking
-    strip src/fujicoin-cli.exe src/fujicoin-tx.exe src/fujicoind.exe src/qt/fujicoin-qt.exe
-    make
-    strip src/fujicoin-cli.exe src/fujicoin-tx.exe src/fujicoind.exe src/qt/fujicoin-qt.exe
     make install
     cd dist/bin
+    strip fujicoin-cli.exe fujicoind.exe fujicoin-qt.exe fujicoin-tx.exe
 
 
 ## Building for 32-bit Windows
