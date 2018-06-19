@@ -11,7 +11,7 @@ Fujicoin is a fork of Bitcoin. This is the best coin intended fair distribution 
  - Confirmation time is ten times faster than Bitcoin, making it reliable for time-critical transactions.
  - Transaction capacity is ten times larger than original Bitcoin. You do not have to worry about transaction congestion.
  - Coins are issued based on S-curve theory, so it will realize a fair distribution over the future.
- - Fujicoin made 51% attack impossible for the first time in the world.
+ - Fujicoin is the first cryptocurrency in the world which implementted measures against double spend by 51% attack on exchange.
  - Difficulty retargeting every block to recover from large hashrate swings
  - scrypt-N11 proof of work algorithm for ASIC resistance
 
