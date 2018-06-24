@@ -17,13 +17,21 @@ the usage of the absolute path.
 How to make a static linked executable
 --------------------------------------
 Preliminary preparations are unnecessary because related libraries are acquired automatically.
-For example on ubuntu 14.04 or ubuntu 16.04 .
+For example on ubuntu 14.04 or ubuntu 16.04 . Do not compile tests and bench.
+Prepare the compilation environment:
+```
+Install Ubuntu 14.04 or 16.04
+apt-get update
+apt-get install git wget
+apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev libminiupnpc-dev libzmq3-dev
+```
+Let's go:
 ```
 git clone https://github.com/fujicoin/fujicoin.git fujicoin-3.0
 cd fujicoin-3.0
 
 git tag
-git checkout Fujicoin-v0.16.1 # Select right version
+git checkout fujicoin-v0.16.1 # Select right version
 git status
 
 mkdir dist
