@@ -25,20 +25,26 @@ def setup():
     if not os.path.isdir('gitian.sigs'):
         subprocess.check_call(['git', 'clone', 'https://github.com/bitcoin-core/gitian.sigs.git'])
     if not os.path.isdir('bitcoin-detached-sigs'):
-        subprocess.check_call(['git', 'clone', 'https://github.com/bitcoin-core/fujicoin-detached-sigs.git'])
+        subprocess.check_call(['git', 'clone', 'https://github.com/bitcoin-core/bitcoin-detached-sigs.git'])
     if not os.path.isdir('gitian-builder'):
         subprocess.check_call(['git', 'clone', 'https://github.com/devrandom/gitian-builder.git'])
     if not os.path.isdir('fujicoin'):
         subprocess.check_call(['git', 'clone', 'https://github.com/fujicoin/fujicoin.git'])
     os.chdir('gitian-builder')
-    make_image_prog = ['bin/make-base-vm', '--suite', 'bionic', '--arch', 'amd64']
+    
+    make_image_prog = ['bin/make-base-vm', '--suite', args.suite, '--arch', 'amd64']
+    
     if args.docker:
         make_image_prog += ['--docker']
     elif not args.kvm:
         make_image_prog += ['--lxc']
     subprocess.check_call(make_image_prog)
     os.chdir(workdir)
-    if args.is_bionic and not args.kvm and not args.docker:
+    if  args.kvm or args.docker:
+        subprocess.check_call(['sudo', 'sed', '-i', 's/"br0"/"lxcbr0"/', '/etc/default/lxc-net'])
+        print('Reboot is required')
+        exit(0)
+    else:
         subprocess.check_call(['sudo', 'sed', '-i', 's/lxcbr0/br0/', '/etc/default/lxc-net'])
         print('Reboot is required')
         exit(0)
@@ -145,6 +151,7 @@ def main():
     parser.add_argument('-b', '--build', action='store_true', dest='build', help='Do a Gitian build')
     parser.add_argument('-s', '--sign', action='store_true', dest='sign', help='Make signed binaries for Windows and MacOS')
     parser.add_argument('-B', '--buildsign', action='store_true', dest='buildsign', help='Build both signed and unsigned binaries')
+    parser.add_argument('-st', '--suite', dest='suite', default='bionic', help='Specify name of Ubuntu used in VM')
     parser.add_argument('-o', '--os', dest='os', default='lwm', help='Specify which Operating Systems the build is for. Default is %(default)s. l for Linux, w for Windows, m for MacOS')
     parser.add_argument('-j', '--jobs', dest='jobs', default='2', help='Number of processes to use. Default %(default)s')
     parser.add_argument('-m', '--memory', dest='memory', default='2000', help='Memory to allocate in MiB. Default %(default)s')
@@ -162,8 +169,6 @@ def main():
     args.linux = 'l' in args.os
     args.windows = 'w' in args.os
     args.macos = 'm' in args.os
-
-    args.is_bionic = b'bionic' in subprocess.check_output(['lsb_release', '-cs'])
 
     if args.buildsign:
         args.build=True
