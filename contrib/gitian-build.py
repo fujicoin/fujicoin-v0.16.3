@@ -160,8 +160,8 @@ def main():
     parser.add_argument('-S', '--setup', action='store_true', dest='setup', help='Set up the Gitian building environment. Uses LXC. If you want to use KVM, use the --kvm option. Only works on Debian-based systems (Ubuntu, Debian)')
     parser.add_argument('-D', '--detach-sign', action='store_true', dest='detach_sign', help='Create the assert file for detached signing. Will not commit anything.')
     parser.add_argument('-n', '--no-commit', action='store_false', dest='commit_files', help='Do not commit anything to git')
-    parser.add_argument('signer', help='GPG signer to sign each build assert file')
-    parser.add_argument('version', help='Version number, commit, or branch to build. If building a commit or branch, the -c option must be specified')
+    parser.add_argument('signer', default='fujicoin', help='GPG signer to sign each build assert file')
+    parser.add_argument('version', default='fujicoin-v0.16.3.1', help='Version number, commit, or branch to build. If building a commit or branch, the -c option must be specified')
 
     args = parser.parse_args()
     workdir = os.getcwd()
@@ -205,7 +205,6 @@ def main():
         print('Try '+script_name+' --help for more information')
         exit(1)
 
-    # Add leading 'v' for tags
     if args.commit and args.pull:
         raise Exception('Cannot have both commit and pull')
     args.commit = args.version
