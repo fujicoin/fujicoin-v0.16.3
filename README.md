@@ -20,6 +20,15 @@ For more information, as well as an immediately useable, binary version of
 the Fujicoin Core software, see http://www.fujicoin.org/, or read the
 [What is Fujicoin? page](http://www.fujicoin.org/what-is-fujicoin.php).
 
+How to Build
+------------
+
+[GITIAN BUILD(Linux, Windows, OSX)](./doc/gitian-building.md)
+
+[UNIX BUILD](./doc/build-unix.md)
+
+[WINDOWS BUILD](./doc/build-windows.md)
+
 License
 -------
 
