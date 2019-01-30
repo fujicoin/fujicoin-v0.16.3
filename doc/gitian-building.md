@@ -109,7 +109,7 @@ Windows:
 
 ```
 ./gitian-build.py --setup --suite bionic satoshi fujicoin-v0.16.3.1
-./gitian-build.py --detach-sign --no-commit -b -o l satoshi fujicoin-v0.16.3.1
+./gitian-build.py --detach-sign --no-commit -b -o w satoshi fujicoin-v0.16.3.1
 ```
 
 OSX:
