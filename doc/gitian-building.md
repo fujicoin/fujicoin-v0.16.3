@@ -39,7 +39,7 @@ Please refer to the following documents to set up the operating systems and Giti
 |                                   | Ubuntu 18.04.1                                                                             |
 |-----------------------------------|------------------------------------------------------------------------------------|
 | Setup virtual machine (optional)  | [Create Ubuntu VirtualBox](./gitian-building/gitian-building-create-vm-debian.md) |
-| Setup Gitian                      | [Setup Gitian on Debian](./gitian-building/gitian-building-setup-gitian-debian.md) |
+| Setup Gitian                      | [Setup Gitian on Ubuntu](./gitian-building/gitian-building-setup-gitian-debian.md) |
 
 Note that a version of `lxc-execute` higher or equal to 2.1.1 is required.
 You can check the version with `lxc-execute --version`.
